@@ -3,6 +3,8 @@
 // TODO See if we can import bool
 #include <xc.h>
 #include <plib.h>
+#include "data.h"
+#include "eventHandler.h"
 
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
 #pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_8
@@ -24,51 +26,22 @@ main()
     TRISAbits.TRISA4 = 0;
     TRISAbits.TRISA5 = 0;
     
-    
-    char isProblem1 = 0;
-    char isProblem2 = 0;
+    struct globalStatus applicationStatus;
+    applicationStatus.ledState[0] = IS_OFF;
+    applicationStatus.ledState[1] = IS_OFF;
+    applicationStatus.btnPrevState[0] = IS_OFF;
+    applicationStatus.btnPrevState[1] = IS_OFF;
+    applicationStatus.shouldBeep = IS_OFF;
     
     while( 1)
     {
-        /*if (_RA0 == 0) {
-            if (_RA4 == 0) {
-                _RA4 = 1;
-            } else {
-                _RA4 = 0;
-                isProblem1 = 1;
-            }
-        }
+        handleClick(&applicationStatus, _RA0, BUTTON_ONE);
+        handleClick(&applicationStatus, _RA1, BUTTON_TWO);
         
-        if (_RA1 == 0) {
-            _RA5 = ~_RA5;
-            
-            if (_RA5 == 1) {
-                isProblem2 = 1;
-            }
-        }
+        disableAlarm(&applicationStatus, _RA2);        
         
-        if (_RA2 == 0) {
-            isProblem1 = 0;
-            isProblem2 = 0;
-            _RA3 = 0;
-        } 
-        
-        if (isProblem1 == 1 || isProblem2 == 1) {
-            _RA3 = 1;
-        }*/
-        
-        if (_RA0 == 0) {
-            // RA4 = LED
-            // RA0 = Butao
-            // RA3 = Buzina
-            _RA4 = ~_RA4;
-            isProblem1 = _RA4;
-        }
-        
-        if (_RA2 == 0) {
-            isProblem1 = 0;
-        }
-        
-        _RA3 = isProblem1 || isProblem2;
+        _RA3 = applicationStatus.shouldBeep;
+        _RA4 = applicationStatus.ledState[0];
+        _RA5 = applicationStatus.ledState[1];
     } // main loop
 } // main
