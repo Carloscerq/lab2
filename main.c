@@ -38,39 +38,39 @@ void SPI_Init() {
                spiClk / SPI_BAUD_RATE); // Set SPI clock
 }
 
-void ILI9341_Init(void) {
-    // Reset the display
-    TFT_RST = 0;
-    delay_ms(100);
-    TFT_RST = 1;
-    delay_ms(100);
+//void ILI9341_Init(void) {
+//    // Reset the display
+//    TFT_RST = 0;
+//    delay_ms(100);
+//    TFT_RST = 1;
+//    delay_ms(100);
+//
+//    // Chip select low to start communication
+//    TFT_CS = 0;
+//
+//    // Initialization sequence
+//    ILI9341_WriteCommand(0xEF);
+//    ILI9341_WriteData(0x03);
+//    ILI9341_WriteData(0x80);
+//    ILI9341_WriteData(0x02);
+//
+//    // Add more initialization commands as needed...
+//
+//    // Chip select high to end communication
+//    TFT_CS = 1;
+//}
 
-    // Chip select low to start communication
-    TFT_CS = 0;
-
-    // Initialization sequence
-    ILI9341_WriteCommand(0xEF);
-    ILI9341_WriteData(0x03);
-    ILI9341_WriteData(0x80);
-    ILI9341_WriteData(0x02);
-
-    // Add more initialization commands as needed...
-
-    // Chip select high to end communication
-    TFT_CS = 1;
-}
-
-void ILI9341_WriteCommand(uint8_t cmd) {
-    TFT_DC = 0; // Command mode
-    SpiChnPutC(SPI_CHANNEL2, cmd);
-    while (SpiChnIsBusy(SPI_CHANNEL2));
-}
-
-void ILI9341_WriteData(uint8_t data) {
-    TFT_DC = 1; // Data mode
-    SpiChnPutC(SPI_CHANNEL2, data);
-    while (SpiChnIsBusy(SPI_CHANNEL2));
-}
+//void ILI9341_WriteCommand(uint8_t cmd) {
+//    TFT_DC = 0; // Command mode
+//    SpiChnPutC(SPI_CHANNEL2, cmd);
+//    while (SpiChnIsBusy(SPI_CHANNEL2));
+//}
+//
+//void ILI9341_WriteData(uint8_t data) {
+//    TFT_DC = 1; // Data mode
+//    SpiChnPutC(SPI_CHANNEL2, data);
+//    while (SpiChnIsBusy(SPI_CHANNEL2));
+//}
 
 int main()
 {

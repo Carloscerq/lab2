@@ -6,7 +6,11 @@
                    projectFiles="true">
       <itemPath>data.h</itemPath>
       <itemPath>eventHandler.h</itemPath>
-      <itemPath>display.h</itemPath>
+      <itemPath>app.h</itemPath>
+      <itemPath>app_status.h</itemPath>
+      <itemPath>glcdfont.h</itemPath>
+      <itemPath>ili9341.h</itemPath>
+      <itemPath>tft_gfx.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -22,6 +26,9 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>eventHandler.c</itemPath>
+      <itemPath>app.c</itemPath>
+      <itemPath>ili9341.c</itemPath>
+      <itemPath>tft_gfx.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -35,7 +42,7 @@
         <targetDevice>PIC32MX795F512L</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>PICkit3PlatformTool</platformTool>
+        <platformTool>Simulator</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.35</languageToolchainVersion>
         <platform>3</platform>
