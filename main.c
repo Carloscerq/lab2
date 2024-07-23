@@ -9,6 +9,17 @@
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
 #pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_8
 
+void initialize_spi_plib(char num) {
+    // init the SPI chn 1 as master, 8 bits/character, frame master
+    // divide fpb by 2 
+    SpiChnOpen(num, SPICON_MSTEN|SPICON_FRMEN|SPICON_SMP|SPICON_ON, 2);
+}
+
+int send_spi_plib(char num, const char* data) {
+    SpiChnPutC(num, *data++);// send data on the master channel
+    return SpiChnGetC(num);// get the received data
+}
+
 main()
 {
     DDPCONbits.JTAGEN = 0;

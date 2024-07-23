@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>data.h</itemPath>
       <itemPath>eventHandler.h</itemPath>
+      <itemPath>spi_data.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -21,6 +22,7 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>eventHandler.c</itemPath>
+      <itemPath>spi_data.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
@@ -44,7 +46,7 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../Program Files (x86)/microchip/xc32/v1.40/pic32mx/include/plib.h</linkerLibFileItem>
+            <linkerLibFileItem>../../../../../../Program Files (x86)/microchip/xc32/v1.40/pic32-libs/include/plib.h</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
