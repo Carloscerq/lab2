@@ -1,20 +1,18 @@
-#define _SUPPRESS_PLIB_WARNING 1
+#define _SUPPRESS_PLIB_WARNING
+#define _DISABLE_OPENADC10_CONFIGPORT_WARNING
 
 // TODO See if we can import bool
 #include <xc.h>
 #include <plib.h>
 #include "data.h"
 #include "eventHandler.h"
+#include "app.h"
 
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
 #pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_8
 
 #define SYS_FREQ        (80000000L)  // System frequency
 #define SPI_BAUD_RATE   1000000      // Desired SPI Baud Rate
-
-#define TFT_CS     LATBbits.LATB2 // Chip Select pin
-#define TFT_DC     LATBbits.LATB3 // Data/Command pin
-#define TFT_RST    LATBbits.LATB4 // Reset pin
 
 // Delay function using Timer1
 void delay_ms(unsigned int ms) {
@@ -23,54 +21,6 @@ void delay_ms(unsigned int ms) {
         while (ReadTimer1() < (SYS_FREQ / 256 / 1000)); // Wait for 1 ms
     }
 }
-
-void SPI_Init() {
-    unsigned int pbClk;
-    pbClk = SYSTEMConfigPerformance(SYS_FREQ);
-    unsigned int spiClk = pbClk / 2; // SPI Clock
-
-    // Configure SPI2 settings
-    SpiChnOpen(SPI_CHANNEL2,
-               SPI_OPEN_MSTEN |       // Master mode
-               SPI_OPEN_CKE_REV |     // Clock edge select
-               SPI_OPEN_MODE8 |       // 8-bit mode
-               SPI_OPEN_ON,           // Turn on SPI
-               spiClk / SPI_BAUD_RATE); // Set SPI clock
-}
-
-//void ILI9341_Init(void) {
-//    // Reset the display
-//    TFT_RST = 0;
-//    delay_ms(100);
-//    TFT_RST = 1;
-//    delay_ms(100);
-//
-//    // Chip select low to start communication
-//    TFT_CS = 0;
-//
-//    // Initialization sequence
-//    ILI9341_WriteCommand(0xEF);
-//    ILI9341_WriteData(0x03);
-//    ILI9341_WriteData(0x80);
-//    ILI9341_WriteData(0x02);
-//
-//    // Add more initialization commands as needed...
-//
-//    // Chip select high to end communication
-//    TFT_CS = 1;
-//}
-
-//void ILI9341_WriteCommand(uint8_t cmd) {
-//    TFT_DC = 0; // Command mode
-//    SpiChnPutC(SPI_CHANNEL2, cmd);
-//    while (SpiChnIsBusy(SPI_CHANNEL2));
-//}
-//
-//void ILI9341_WriteData(uint8_t data) {
-//    TFT_DC = 1; // Data mode
-//    SpiChnPutC(SPI_CHANNEL2, data);
-//    while (SpiChnIsBusy(SPI_CHANNEL2));
-//}
 
 int main()
 {

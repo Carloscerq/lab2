@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdbool.h>
 #include "ili9341.h"
 
 ILI9341_INFO ili9341Info;
@@ -152,10 +153,8 @@ void ILI9341_Init(void)
 void ili9341_spiWrite8(uint8_t c)
 {
     // Envia um único byte via SPI
-    SPI2_Write(&c, 1);
-    CORETIMER_DelayMs(5);
+    SPI_SendData(1, &c, 1);
 }
-
 
 void ili9341_spiWrite16(uint16_t c)
 {
@@ -164,8 +163,7 @@ void ili9341_spiWrite16(uint16_t c)
     data[1] = c & 0xFF;  // Byte menos significativo (LSB)
 
     // Envia os dois bytes via SPI, um byte de cada vez
-    SPI2_Write(data, 2);
-    CORETIMER_DelayMs(5);
+    SPI_SendData(1, data, 2);
 
 }
   

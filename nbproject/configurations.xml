@@ -4,10 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <logicalFolder name="configs" displayName="configs" projectFiles="true">
+        <itemPath>configs/spi_plib.h</itemPath>
+        <itemPath>configs/gpio.h</itemPath>
+      </logicalFolder>
       <itemPath>data.h</itemPath>
       <itemPath>eventHandler.h</itemPath>
       <itemPath>app.h</itemPath>
-      <itemPath>app_status.h</itemPath>
       <itemPath>glcdfont.h</itemPath>
       <itemPath>ili9341.h</itemPath>
       <itemPath>tft_gfx.h</itemPath>
@@ -24,6 +27,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <logicalFolder name="configs" displayName="configs" projectFiles="true">
+        <itemPath>configs/spi_plib.c</itemPath>
+        <itemPath>configs/gpio.c</itemPath>
+      </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>eventHandler.c</itemPath>
       <itemPath>app.c</itemPath>

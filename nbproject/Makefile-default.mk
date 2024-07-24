@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c eventHandler.c app.c ili9341.c tft_gfx.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/spi_plib.c configs/gpio.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/eventHandler.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/ili9341.o.d ${OBJECTDIR}/tft_gfx.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/eventHandler.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/ili9341.o.d ${OBJECTDIR}/tft_gfx.o.d ${OBJECTDIR}/configs/spi_plib.o.d ${OBJECTDIR}/configs/gpio.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o
 
 # Source Files
-SOURCEFILES=main.c eventHandler.c app.c ili9341.c tft_gfx.c
+SOURCEFILES=main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/spi_plib.c configs/gpio.c
 
 
 
@@ -101,66 +101,90 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/41617d7698be3fa09a47e571d57d1d20e4c0b7e8 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/ae78bca3d5233ce2709918a107cccf5e4487ae59 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/eventHandler.o: eventHandler.c  .generated_files/flags/default/20f8ff6bae33312a0e19a81edd70cc399c74cf7d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/eventHandler.o: eventHandler.c  .generated_files/flags/default/fb0aa18a9ca2c129e66eceea8fa3ef5e7ed1d6fb .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/eventHandler.o.d 
 	@${RM} ${OBJECTDIR}/eventHandler.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/eventHandler.o.d" -o ${OBJECTDIR}/eventHandler.o eventHandler.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/app.o: app.c  .generated_files/flags/default/bb0d8c36c00c8ac432720c167d44467eea2fa903 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/app.o: app.c  .generated_files/flags/default/64b756d338dc8a3d0b5f53b02ee2576b1d105440 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/app.o.d 
 	@${RM} ${OBJECTDIR}/app.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/app.o.d" -o ${OBJECTDIR}/app.o app.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ili9341.o: ili9341.c  .generated_files/flags/default/64b294022ad30c50e163f26c18d646ae432cd73d .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/ili9341.o: ili9341.c  .generated_files/flags/default/92d5a40e7b48669bfd7e204c88f8441ca5c6d864 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ili9341.o.d 
 	@${RM} ${OBJECTDIR}/ili9341.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/ili9341.o.d" -o ${OBJECTDIR}/ili9341.o ili9341.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/6a4922709d89c917c26e90658138714a195d3776 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/aa7f272c431d82a78727001a161bd11074d68eef .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/tft_gfx.o.d 
 	@${RM} ${OBJECTDIR}/tft_gfx.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/tft_gfx.o.d" -o ${OBJECTDIR}/tft_gfx.o tft_gfx.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/f9393eea7e959ffba0d4ed6ab4b8025111354474 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o.d 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/ba6fd78cad96641784159dff66fe3973216d2604 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/gpio.o.d 
+	@${RM} ${OBJECTDIR}/configs/gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
-${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/c6ac3e7ed8c07e477a35d753bca9c9125aa43189 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/cce2638a9f9da2ef042f9f8ac7a2dff5e5e408e0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/eventHandler.o: eventHandler.c  .generated_files/flags/default/e9ab903a01c18d3a9050f1cecc343e8c5bf49d8c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/eventHandler.o: eventHandler.c  .generated_files/flags/default/ec470bf16a395aaab58bcc495b1439114806d28c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/eventHandler.o.d 
 	@${RM} ${OBJECTDIR}/eventHandler.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/eventHandler.o.d" -o ${OBJECTDIR}/eventHandler.o eventHandler.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/app.o: app.c  .generated_files/flags/default/79f57d700d9ff1e4bef606625700e6715265d1ff .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/app.o: app.c  .generated_files/flags/default/8b3d2378523830fa35af051e6f3a7cde7390af51 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/app.o.d 
 	@${RM} ${OBJECTDIR}/app.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/app.o.d" -o ${OBJECTDIR}/app.o app.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/ili9341.o: ili9341.c  .generated_files/flags/default/1cfcc41ce38c2ed0b0d0294759be311a0a588527 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/ili9341.o: ili9341.c  .generated_files/flags/default/924d5f3d32f593d03baffb5f29cc905479034d46 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/ili9341.o.d 
 	@${RM} ${OBJECTDIR}/ili9341.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/ili9341.o.d" -o ${OBJECTDIR}/ili9341.o ili9341.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/9f97d7939ef796a718f8c9df1048f6059a8a6b91 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/9a845304d70a1ca842ee0b82b3af6ce184832c70 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/tft_gfx.o.d 
 	@${RM} ${OBJECTDIR}/tft_gfx.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/tft_gfx.o.d" -o ${OBJECTDIR}/tft_gfx.o tft_gfx.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/ab59f65ebcda8db1fdea3a00020d56aca6d371ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o.d 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/1ec1273ea4d8d4ec500b76b1ae1d64bca59f19dd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/gpio.o.d 
+	@${RM} ${OBJECTDIR}/configs/gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
