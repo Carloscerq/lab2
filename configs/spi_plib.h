@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 // Funções de inicialização do SPI
-void SPI_InitMaster(uint8_t spiChannel, uint32_t baudRate);
+void SPI_InitMaster(uint8_t spiChannel);
 
 // Funções de transmissão e recepção de dados
 void SPI_SendData(uint8_t spiChannel, const char* txBuff, size_t txSize);

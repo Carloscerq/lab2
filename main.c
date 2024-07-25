@@ -1,4 +1,5 @@
 // TODO See if we can import bool
+#include <xc.h>
 #include "configs/system.h"
 #include "data.h"
 #include "eventHandler.h"
@@ -6,12 +7,9 @@
 
 int main()
 {
-    DDPCONbits.JTAGEN = 0;
-
-    OSCConfig(OSC_FRC, 0, 0, 0);
-    mOSCSetPBDIV(OSC_PB_DIV_4);
-    OSCConfig(OSC_POSC_PLL, OSC_PLL_MULT_15, OSC_PLL_POST_1, 0);
-
+    SystemInitialize();
+    APP_Initialize();
+    
     // Init port A
     // Must set to 0 to turn on
     TRISAbits.TRISA0 = 1;

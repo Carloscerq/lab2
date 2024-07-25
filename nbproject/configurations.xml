@@ -30,9 +30,9 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="configs" displayName="configs" projectFiles="true">
-        <itemPath>configs/spi_plib.c</itemPath>
         <itemPath>configs/gpio.c</itemPath>
         <itemPath>configs/plib_coretimer.c</itemPath>
+        <itemPath>configs/system.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>eventHandler.c</itemPath>

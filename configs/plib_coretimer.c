@@ -1,5 +1,5 @@
 #include "plib_coretimer.h"
-#include "system.h"
+#include <xc.h>
 
 static uint32_t compareValue = CORE_TIMER_COMPARE_VALUE;
 
