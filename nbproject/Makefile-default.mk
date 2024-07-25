@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/spi_plib.c configs/gpio.c
+SOURCEFILES_QUOTED_IF_SPACED=configs/spi_plib.c configs/gpio.c main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/plib_coretimer.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/eventHandler.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/ili9341.o.d ${OBJECTDIR}/tft_gfx.o.d ${OBJECTDIR}/configs/spi_plib.o.d ${OBJECTDIR}/configs/gpio.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o ${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/plib_coretimer.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/configs/spi_plib.o.d ${OBJECTDIR}/configs/gpio.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/eventHandler.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/ili9341.o.d ${OBJECTDIR}/tft_gfx.o.d ${OBJECTDIR}/configs/plib_coretimer.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o
+OBJECTFILES=${OBJECTDIR}/configs/spi_plib.o ${OBJECTDIR}/configs/gpio.o ${OBJECTDIR}/main.o ${OBJECTDIR}/eventHandler.o ${OBJECTDIR}/app.o ${OBJECTDIR}/ili9341.o ${OBJECTDIR}/tft_gfx.o ${OBJECTDIR}/configs/plib_coretimer.o
 
 # Source Files
-SOURCEFILES=main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/spi_plib.c configs/gpio.c
+SOURCEFILES=configs/spi_plib.c configs/gpio.c main.c eventHandler.c app.c ili9341.c tft_gfx.c configs/plib_coretimer.c
 
 
 
@@ -101,6 +101,18 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/f9393eea7e959ffba0d4ed6ab4b8025111354474 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o.d 
+	@${RM} ${OBJECTDIR}/configs/spi_plib.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/ba6fd78cad96641784159dff66fe3973216d2604 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/gpio.o.d 
+	@${RM} ${OBJECTDIR}/configs/gpio.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/ae78bca3d5233ce2709918a107cccf5e4487ae59 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
@@ -131,19 +143,25 @@ ${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/aa7f272c431d82
 	@${RM} ${OBJECTDIR}/tft_gfx.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/tft_gfx.o.d" -o ${OBJECTDIR}/tft_gfx.o tft_gfx.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/f9393eea7e959ffba0d4ed6ab4b8025111354474 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/configs/plib_coretimer.o: configs/plib_coretimer.c  .generated_files/flags/default/d35b9b329fbc41d0403c6e28860425177c2ad336 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}/configs" 
+	@${RM} ${OBJECTDIR}/configs/plib_coretimer.o.d 
+	@${RM} ${OBJECTDIR}/configs/plib_coretimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/plib_coretimer.o.d" -o ${OBJECTDIR}/configs/plib_coretimer.o configs/plib_coretimer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+else
+${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/ab59f65ebcda8db1fdea3a00020d56aca6d371ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/configs" 
 	@${RM} ${OBJECTDIR}/configs/spi_plib.o.d 
 	@${RM} ${OBJECTDIR}/configs/spi_plib.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/ba6fd78cad96641784159dff66fe3973216d2604 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/1ec1273ea4d8d4ec500b76b1ae1d64bca59f19dd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/configs" 
 	@${RM} ${OBJECTDIR}/configs/gpio.o.d 
 	@${RM} ${OBJECTDIR}/configs/gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/cce2638a9f9da2ef042f9f8ac7a2dff5e5e408e0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
@@ -174,17 +192,11 @@ ${OBJECTDIR}/tft_gfx.o: tft_gfx.c  .generated_files/flags/default/9a845304d70a1c
 	@${RM} ${OBJECTDIR}/tft_gfx.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/tft_gfx.o.d" -o ${OBJECTDIR}/tft_gfx.o tft_gfx.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/configs/spi_plib.o: configs/spi_plib.c  .generated_files/flags/default/ab59f65ebcda8db1fdea3a00020d56aca6d371ea .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+${OBJECTDIR}/configs/plib_coretimer.o: configs/plib_coretimer.c  .generated_files/flags/default/d2b86e6ccc7c1e96470163f64612ac220987d064 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}/configs" 
-	@${RM} ${OBJECTDIR}/configs/spi_plib.o.d 
-	@${RM} ${OBJECTDIR}/configs/spi_plib.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/spi_plib.o.d" -o ${OBJECTDIR}/configs/spi_plib.o configs/spi_plib.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/configs/gpio.o: configs/gpio.c  .generated_files/flags/default/1ec1273ea4d8d4ec500b76b1ae1d64bca59f19dd .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
-	@${MKDIR} "${OBJECTDIR}/configs" 
-	@${RM} ${OBJECTDIR}/configs/gpio.o.d 
-	@${RM} ${OBJECTDIR}/configs/gpio.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/gpio.o.d" -o ${OBJECTDIR}/configs/gpio.o configs/gpio.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	@${RM} ${OBJECTDIR}/configs/plib_coretimer.o.d 
+	@${RM} ${OBJECTDIR}/configs/plib_coretimer.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -MP -MMD -MF "${OBJECTDIR}/configs/plib_coretimer.o.d" -o ${OBJECTDIR}/configs/plib_coretimer.o configs/plib_coretimer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
@@ -197,14 +209,14 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk  ../../../../Program\ Files\ (x86)/microchip/xc32/v1.40/pic32mx/include/plib.h  
+${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}    "..\..\..\..\Program Files (x86)\microchip\xc32\v1.40\pic32mx\include\plib.h"      -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--defsym=_min_heap_size=512,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE) -g -mdebugger -D__MPLAB_DEBUGGER_SIMULATOR=1 -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)      -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,-D=__DEBUG_D,--defsym=__MPLAB_DEBUGGER_SIMULATOR=1,--defsym=_min_heap_size=512,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	
 else
-${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk  ../../../../Program\ Files\ (x86)/microchip/xc32/v1.40/pic32mx/include/plib.h 
+${DISTDIR}/lab2.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/lab2.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}    "..\..\..\..\Program Files (x86)\microchip\xc32\v1.40\pic32mx\include\plib.h"      -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=512,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
+	${MP_CC} $(MP_EXTRA_LD_PRE)  -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${DISTDIR}/lab2.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} ${OBJECTFILES_QUOTED_IF_SPACED}          -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD)  -Wl,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_LD_POST)$(MP_LINKER_FILE_OPTION),--defsym=_min_heap_size=512,--no-code-in-dinit,--no-dinit-in-serial-mem,-Map="${DISTDIR}/${PROJECTNAME}.${IMAGE_TYPE}.map",--memorysummary,${DISTDIR}/memoryfile.xml -mdfp="${DFP_DIR}"
 	${MP_CC_DIR}\\xc32-bin2hex ${DISTDIR}/lab2.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX} 
 endif
 

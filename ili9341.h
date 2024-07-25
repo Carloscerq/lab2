@@ -3,6 +3,7 @@
 
 #include "configs/spi_plib.h"
 #include "configs/gpio.h"
+#include "configs/plib_coretimer.h"
 
 #define ILI9341_DEF_WIDTH  240
 #define ILI9341_DEF_HEIGHT 320

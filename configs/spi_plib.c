@@ -1,5 +1,5 @@
 #include "spi_plib.h"
-#include <plib.h>
+#include "system.h"
 
 // Inicializa o SPI como mestre
 void SPI_InitMaster(uint8_t spiChannel, uint32_t baudRate) {

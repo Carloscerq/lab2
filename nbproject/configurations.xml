@@ -7,6 +7,8 @@
       <logicalFolder name="configs" displayName="configs" projectFiles="true">
         <itemPath>configs/spi_plib.h</itemPath>
         <itemPath>configs/gpio.h</itemPath>
+        <itemPath>configs/plib_coretimer.h</itemPath>
+        <itemPath>configs/system.h</itemPath>
       </logicalFolder>
       <itemPath>data.h</itemPath>
       <itemPath>eventHandler.h</itemPath>
@@ -30,6 +32,7 @@
       <logicalFolder name="configs" displayName="configs" projectFiles="true">
         <itemPath>configs/spi_plib.c</itemPath>
         <itemPath>configs/gpio.c</itemPath>
+        <itemPath>configs/plib_coretimer.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>eventHandler.c</itemPath>
@@ -62,7 +65,6 @@
       <compileType>
         <linkerTool>
           <linkerLibItems>
-            <linkerLibFileItem>../../../../Program Files (x86)/microchip/xc32/v1.40/pic32mx/include/plib.h</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
