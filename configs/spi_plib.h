@@ -8,8 +8,8 @@
 void SPI_InitMaster(uint8_t spiChannel);
 
 // Funções de transmissão e recepção de dados
-void SPI_SendData(uint8_t spiChannel, const char* txBuff, size_t txSize);
-void SPI_ReceiveData(uint8_t spiChannel, char* rxBuff, size_t rxSize);
-void SPI_TransferData(uint8_t spiChannel, const char* txBuff, char* rxBuff, size_t txSize);
+void SPI_SendByte(uint8_t spiChannel, uint8_t txByte);
+uint8_t SPI_ReceiveByte(uint8_t spiChannel);
+uint8_t SPI_TransferByte(uint8_t spiChannel, uint8_t txByte);
 
 #endif // SPI_PLIB_H

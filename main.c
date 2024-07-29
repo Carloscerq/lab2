@@ -1,6 +1,7 @@
 // TODO See if we can import bool
 #include <xc.h>
 #include "configs/system.h"
+#include "configs/gpio.h"
 #include "data.h"
 #include "eventHandler.h"
 #include "app.h"
@@ -10,15 +11,6 @@ int main()
     SystemInitialize();
     APP_Initialize();
     
-    // Init port A
-    // Must set to 0 to turn on
-    TRISAbits.TRISA0 = 1;
-    TRISAbits.TRISA1 = 1;
-    TRISAbits.TRISA2 = 1;
-    TRISAbits.TRISA3 = 0;
-    TRISAbits.TRISA4 = 0;
-    TRISAbits.TRISA5 = 0;
-    
     struct globalStatus applicationStatus;
     applicationStatus.ledState[0] = IS_OFF;
     applicationStatus.ledState[1] = IS_OFF;
@@ -26,15 +18,15 @@ int main()
     applicationStatus.btnPrevState[1] = IS_OFF;
     applicationStatus.shouldBeep = IS_OFF;
     
-    while( 1)
+    while(1)
     {
-        handleClick(&applicationStatus, _RA0, BUTTON_ONE);
-        handleClick(&applicationStatus, _RA1, BUTTON_TWO);
+        handleClick(&applicationStatus, BUTTON_PROB1_PIN, BUTTON_ONE);
+        handleClick(&applicationStatus, BUTTON_PROB2_PIN, BUTTON_TWO);
         
-        disableAlarm(&applicationStatus, _RA2);        
+        disableAlarm(&applicationStatus, BUTTON_ALARM_PIN);        
         
-        _RA3 = applicationStatus.shouldBeep;
-        _RA4 = applicationStatus.ledState[0];
-        _RA5 = applicationStatus.ledState[1];
+        BUZZER_PIN = applicationStatus.shouldBeep;
+        LED1_PIN = applicationStatus.ledState[0];
+        LED2_PIN = applicationStatus.ledState[1];
     } // main loop
 } // main

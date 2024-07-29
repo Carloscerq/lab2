@@ -10,48 +10,37 @@
 #include <plib.h>
 
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
-#pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_4
+#pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_1
 
 // Inicializa o SPI como mestre
 void SPI_InitMaster(uint8_t spiChannel) {
-    SpiChnOpen(spiChannel, SPICON_MSTEN | SPICON_FRMEN | SPICON_SMP | SPICON_ON, 4);
+    SpiChnOpen(spiChannel, SPICON_MSTEN | SPICON_FRMEN | SPICON_SMP | SPICON_ON, 8);
 }
 
-// Envia dados pelo SPI
-void SPI_SendData(uint8_t spiChannel, const char* txBuff, size_t txSize) {
-    while (txSize--) {
-        SpiChnPutC(spiChannel, *txBuff++);
-    }
+// Envia um byte pelo SPI
+void SPI_SendByte(uint8_t spiChannel, uint8_t txByte) {
+    SpiChnPutC(spiChannel, txByte);
 }
 
-// Recebe dados pelo SPI
-void SPI_ReceiveData(uint8_t spiChannel, char* rxBuff, size_t rxSize) {
-    while (rxSize--) {
-        *rxBuff++ = SpiChnGetC(spiChannel);
-    }
+// Recebe um byte pelo SPI
+uint8_t SPI_ReceiveByte(uint8_t spiChannel) {
+    return SpiChnGetC(spiChannel);
 }
 
-// Realiza a transferência de dados
-void SPI_TransferData(uint8_t spiChannel, const char* txBuff, char* rxBuff, size_t txSize) {
-    int ix = txSize;
-    const char* pSrc = txBuff;
-    char* pDst = rxBuff;
-
-    while (ix--) {
-        SpiChnPutC(spiChannel, *pSrc++);  // Envia dados pelo canal mestre
-        *pDst++ = SpiChnGetC(spiChannel); // Recebe dados pelo canal mestre
-    }
+// Realiza a transferência de um byte (envia e recebe simultaneamente)
+uint8_t SPI_TransferByte(uint8_t spiChannel, uint8_t txByte) {
+    SpiChnPutC(spiChannel, txByte);        // Envia um byte
+    return SpiChnGetC(spiChannel);         // Recebe um byte
 }
 
 void SystemInitialize() {
     DDPCONbits.JTAGEN = 0;
 
-    OSCConfig(OSC_FRC, 0, 0, 0);
-    mOSCSetPBDIV(OSC_PB_DIV_4);
-    OSCConfig(OSC_POSC_PLL, OSC_PLL_MULT_15, OSC_PLL_POST_1, 0);
-    SYSTEMConfigWaitStatesAndPB(SYS_FREQ);
-    CheKseg0CacheOn();
-    mBMXDisableDRMWaitState();
+//    OSCConfig(OSC_FRC, 0, 0, 0);
+//    mOSCSetPBDIV(OSC_PB_DIV_4);
+//    OSCConfig(OSC_POSC_PLL, OSC_PLL_MULT_15, OSC_PLL_POST_1, 0);
+    
+    SYSTEMConfig(SYS_FREQ, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
     
     GPIO_Init();
     SPI_InitMaster(SPI_CHANNEL2); // SPI para display

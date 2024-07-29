@@ -3,16 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Git/lab2/configs/plib_coretimer.h</file>
-            <file>file:/D:/Git/lab2/configs/spi_plib.c</file>
+            <file>file:/D:/Git/lab2/configs/gpio.c</file>
             <file>file:/D:/Git/lab2/configs/system.h</file>
-            <file>file:/D:/Git/lab2/ili9341.h</file>
+            <file>file:/C:/Program%20Files/Microchip/xc32/v4.35/pic32mx/include/peripheral/system.h</file>
+            <file>file:/D:/Git/lab2/configs/plib_coretimer.h</file>
             <file>file:/D:/Git/lab2/app.c</file>
-            <file>file:/D:/Git/lab2/configs/spi_plib.h</file>
+            <file>file:/D:/Git/lab2/configs/system.c</file>
             <file>file:/D:/Git/lab2/configs/gpio.h</file>
             <file>file:/D:/Git/lab2/main.c</file>
             <file>file:/D:/Git/lab2/ili9341.c</file>
             <file>file:/D:/Git/lab2/configs/plib_coretimer.c</file>
+            <file>file:/D:/Git/lab2/eventHandler.c</file>
         </group>
     </open-files>
 </project-private>

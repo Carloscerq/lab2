@@ -22,11 +22,6 @@ void ILI9341_Init(void)
     ili9341Info.textBgColor = ILI9341_BLACK;
     ili9341Info.wrap = false;
 
-//    LCD_RST_TRIS;
-//    LCD_DC_TRIS;
-//    LCD_CS_TRIS;
-//    LCD_SDO_TRIS;
-
     LCD_DC_CLR;
     LCD_CS_CLR;
     LCD_CS_SET;
@@ -153,17 +148,19 @@ void ILI9341_Init(void)
 void ili9341_spiWrite8(uint8_t c)
 {
     // Envia um único byte via SPI
-    SPI_SendData(1, &c, 1);
+    SPI_SendByte(SPI_CHN, c);
 }
 
 void ili9341_spiWrite16(uint16_t c)
 {
-    uint8_t data[2];
-    data[0] = c >> 8;    // Byte mais significativo (MSB)
-    data[1] = c & 0xFF;  // Byte menos significativo (LSB)
+    uint8_t msb, lsb;
+    msb = c >> 8;    // Byte mais significativo (MSB)
+    lsb = c & 0xFF;  // Byte menos significativo (LSB)
 
     // Envia os dois bytes via SPI, um byte de cada vez
-    SPI_SendData(1, data, 2);
+    SPI_SendByte(SPI_CHN, msb);
+    SPI_SendByte(SPI_CHN, lsb);
+
 
 }
   
