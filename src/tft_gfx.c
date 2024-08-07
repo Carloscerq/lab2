@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include "ili9341.h"
 #include "tft_gfx.h"
 #include "glcdfont.h"

@@ -1,13 +1,12 @@
 #include <math.h>
+#include <stdbool.h>
 #include "ili9341.h"
 
 ILI9341_INFO ili9341Info;
 
-void ili9341_writeCommand(uint8_t cmd);
-void ili9341_writeData(uint8_t dat);
-void ili9341_writeData16(uint16_t dat);
-void ili9341_mode16(void);
-void ili9341_mode8(void);
+//void ili9341_writeCommand(uint8_t cmd);
+//void ili9341_writeData(uint8_t dat);
+//void ili9341_writeData16(uint16_t dat);
 
 void ILI9341_Init(void)
 {
@@ -21,20 +20,15 @@ void ILI9341_Init(void)
     ili9341Info.textBgColor = ILI9341_BLACK;
     ili9341Info.wrap = false;
 
-//    LCD_RST_TRIS;
-//    LCD_DC_TRIS;
-//    LCD_CS_TRIS;
-//    LCD_SDO_TRIS;
-
     LCD_DC_CLR;
     LCD_CS_CLR;
     LCD_CS_SET;
 
     // Reset
     LCD_RST_CLR;
-    CORETIMER_DelayMs(10);    
+    CORETIMER_DelayMs(100);    
     LCD_RST_SET;
-    CORETIMER_DelayMs(10);
+    CORETIMER_DelayMs(100);
 
     ili9341_writeCommand(0xEF);
     CORETIMER_DelayMs(100);
@@ -146,27 +140,26 @@ void ILI9341_Init(void)
     CORETIMER_DelayMs(150);
     ili9341_writeCommand(ILI9341_DISPON);    //Display on
     CORETIMER_DelayMs(150);
-
 }
 
 void ili9341_spiWrite8(uint8_t c)
 {
     // Envia um único byte via SPI
     SPI2_Write(&c, 1);
-    CORETIMER_DelayMs(5);
+    CORETIMER_DelayMs(50);
 }
-
 
 void ili9341_spiWrite16(uint16_t c)
 {
-    uint8_t data[2];
-    data[0] = c >> 8;    // Byte mais significativo (MSB)
-    data[1] = c & 0xFF;  // Byte menos significativo (LSB)
+    uint8_t msb, lsb;
+    msb = c >> 8;    // Byte mais significativo (MSB)
+    lsb = c & 0xFF;  // Byte menos significativo (LSB)
 
     // Envia os dois bytes via SPI, um byte de cada vez
-    SPI2_Write(data, 2);
-    CORETIMER_DelayMs(5);
-
+    SPI2_Write(&msb, 1);
+    CORETIMER_DelayMs(50);
+    SPI2_Write(&lsb, 1);
+    CORETIMER_DelayMs(50);
 }
   
 void ili9341_writeCommand(uint8_t cmd)

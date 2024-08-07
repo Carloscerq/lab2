@@ -62,57 +62,89 @@
 // *****************************************************************************
 
 
-/*** Macros for SCK pin ***/
-#define SCK_Get()               ((PORTG >> 6) & 0x1)
-#define SCK_PIN                  GPIO_PIN_RG6
+/*** Macros for SCK2 pin ***/
+#define SCK2_Get()               ((PORTG >> 6) & 0x1)
+#define SCK2_PIN                  GPIO_PIN_RG6
 
-/*** Macros for SDI pin ***/
-#define SDI_Get()               ((PORTG >> 7) & 0x1)
-#define SDI_PIN                  GPIO_PIN_RG7
+/*** Macros for SDI2 pin ***/
+#define SDI2_Get()               ((PORTG >> 7) & 0x1)
+#define SDI2_PIN                  GPIO_PIN_RG7
 
-/*** Macros for SDO pin ***/
-#define SDO_Get()               ((PORTG >> 8) & 0x1)
-#define SDO_PIN                  GPIO_PIN_RG8
+/*** Macros for SDO2 pin ***/
+#define SDO2_Get()               ((PORTG >> 8) & 0x1)
+#define SDO2_PIN                  GPIO_PIN_RG8
 
-/*** Macros for SS_NOT_USE pin ***/
-#define SS_NOT_USE_Get()               ((PORTG >> 9) & 0x1)
-#define SS_NOT_USE_PIN                  GPIO_PIN_RG9
+/*** Macros for LED1 pin ***/
+#define LED1_Set()               (LATASET = (1<<0))
+#define LED1_Clear()             (LATACLR = (1<<0))
+#define LED1_Toggle()            (LATAINV= (1<<0))
+#define LED1_OutputEnable()      (TRISACLR = (1<<0))
+#define LED1_InputEnable()       (TRISASET = (1<<0))
+#define LED1_Get()               ((PORTA >> 0) & 0x1)
+#define LED1_PIN                  TRISAbits.TRISA0
 
-/*** Macros for LED_END pin ***/
-#define LED_END_Set()               (LATGSET = (1<<3))
-#define LED_END_Clear()             (LATGCLR = (1<<3))
-#define LED_END_Toggle()            (LATGINV= (1<<3))
-#define LED_END_OutputEnable()      (TRISGCLR = (1<<3))
-#define LED_END_InputEnable()       (TRISGSET = (1<<3))
-#define LED_END_Get()               ((PORTG >> 3) & 0x1)
-#define LED_END_PIN                  GPIO_PIN_RG3
+/*** Macros for LED2 pin ***/
+#define LED2_Set()               (LATASET = (1<<1))
+#define LED2_Clear()             (LATACLR = (1<<1))
+#define LED2_Toggle()            (LATAINV= (1<<1))
+#define LED2_OutputEnable()      (TRISACLR = (1<<1))
+#define LED2_InputEnable()       (TRISASET = (1<<1))
+#define LED2_Get()               ((PORTA >> 1) & 0x1)
+#define LED2_PIN                  TRISAbits.TRISA1
 
-/*** Macros for LED_INIT pin ***/
-#define LED_INIT_Set()               (LATGSET = (1<<2))
-#define LED_INIT_Clear()             (LATGCLR = (1<<2))
-#define LED_INIT_Toggle()            (LATGINV= (1<<2))
-#define LED_INIT_OutputEnable()      (TRISGCLR = (1<<2))
-#define LED_INIT_InputEnable()       (TRISGSET = (1<<2))
-#define LED_INIT_Get()               ((PORTG >> 2) & 0x1)
-#define LED_INIT_PIN                  GPIO_PIN_RG2
+/*** Macros for BUZZER pin ***/
+#define BUZZER_Set()               (LATASET = (1<<2))
+#define BUZZER_Clear()             (LATACLR = (1<<2))
+#define BUZZER_Toggle()            (LATAINV= (1<<2))
+#define BUZZER_OutputEnable()      (TRISACLR = (1<<2))
+#define BUZZER_InputEnable()       (TRISASET = (1<<2))
+#define BUZZER_Get()               ((PORTA >> 2) & 0x1)
+#define BUZZER_PIN                  TRISAbits.TRISA2
+
+/*** Macros for BUTTON_PROB1 pin ***/
+#define BUTTON_PROB1_Set()               (LATASET = (1<<3))
+#define BUTTON_PROB1_Clear()             (LATACLR = (1<<3))
+#define BUTTON_PROB1_Toggle()            (LATAINV= (1<<3))
+#define BUTTON_PROB1_OutputEnable()      (TRISACLR = (1<<3))
+#define BUTTON_PROB1_InputEnable()       (TRISASET = (1<<3))
+#define BUTTON_PROB1_Get()               ((PORTA >> 3) & 0x1)
+#define BUTTON_PROB1_PIN                  GPIO_PIN_RA3
+
+/*** Macros for BUTTON_PROB2 pin ***/
+#define BUTTON_PROB2_Set()               (LATASET = (1<<4))
+#define BUTTON_PROB2_Clear()             (LATACLR = (1<<4))
+#define BUTTON_PROB2_Toggle()            (LATAINV= (1<<4))
+#define BUTTON_PROB2_OutputEnable()      (TRISACLR = (1<<4))
+#define BUTTON_PROB2_InputEnable()       (TRISASET = (1<<4))
+#define BUTTON_PROB2_Get()               ((PORTA >> 4) & 0x1)
+#define BUTTON_PROB2_PIN                  GPIO_PIN_RA4
+
+/*** Macros for BUTTON_ALARM pin ***/
+#define BUTTON_ALARM_Set()               (LATASET = (1<<5))
+#define BUTTON_ALARM_Clear()             (LATACLR = (1<<5))
+#define BUTTON_ALARM_Toggle()            (LATAINV= (1<<5))
+#define BUTTON_ALARM_OutputEnable()      (TRISACLR = (1<<5))
+#define BUTTON_ALARM_InputEnable()       (TRISASET = (1<<5))
+#define BUTTON_ALARM_Get()               ((PORTA >> 5) & 0x1)
+#define BUTTON_ALARM_PIN                  GPIO_PIN_RA5
+
+/*** Macros for CS pin ***/
+#define CS_Set()               (LATGSET = (1<<14))
+#define CS_Clear()             (LATGCLR = (1<<14))
+#define CS_Toggle()            (LATGINV= (1<<14))
+#define CS_OutputEnable()      (TRISGCLR = (1<<14))
+#define CS_InputEnable()       (TRISGSET = (1<<14))
+#define CS_Get()               ((PORTG >> 14) & 0x1)
+#define CS_PIN                  GPIO_PIN_RG14
 
 /*** Macros for DC pin ***/
-#define DC_Set()               (LATGSET = (1<<14))
-#define DC_Clear()             (LATGCLR = (1<<14))
-#define DC_Toggle()            (LATGINV= (1<<14))
-#define DC_OutputEnable()      (TRISGCLR = (1<<14))
-#define DC_InputEnable()       (TRISGSET = (1<<14))
-#define DC_Get()               ((PORTG >> 14) & 0x1)
-#define DC_PIN                  GPIO_PIN_RG14
-
-/*** Macros for SS pin ***/
-#define SS_Set()               (LATGSET = (1<<12))
-#define SS_Clear()             (LATGCLR = (1<<12))
-#define SS_Toggle()            (LATGINV= (1<<12))
-#define SS_OutputEnable()      (TRISGCLR = (1<<12))
-#define SS_InputEnable()       (TRISGSET = (1<<12))
-#define SS_Get()               ((PORTG >> 12) & 0x1)
-#define SS_PIN                  GPIO_PIN_RG12
+#define DC_Set()               (LATGSET = (1<<12))
+#define DC_Clear()             (LATGCLR = (1<<12))
+#define DC_Toggle()            (LATGINV= (1<<12))
+#define DC_OutputEnable()      (TRISGCLR = (1<<12))
+#define DC_InputEnable()       (TRISGSET = (1<<12))
+#define DC_Get()               ((PORTG >> 12) & 0x1)
+#define DC_PIN                  GPIO_PIN_RG12
 
 /*** Macros for RST pin ***/
 #define RST_Set()               (LATGSET = (1<<13))

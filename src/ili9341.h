@@ -1,9 +1,11 @@
 #ifndef ILI9341_H
 #define	ILI9341_H
 
-#include "peripheral/coretimer/plib_coretimer.h"
-#include "peripheral/gpio/plib_gpio.h"
-#include "peripheral/spi/spi_master/plib_spi2_master.h"
+#include "config/default/peripheral/spi/spi_master/plib_spi2_master.h"
+#include "config/default/peripheral/gpio/plib_gpio.h"
+#include "config/default/peripheral/coretimer/plib_coretimer.h"
+
+#define SPI_CHN 2
 
 #define ILI9341_DEF_WIDTH  240
 #define ILI9341_DEF_HEIGHT 320
@@ -105,14 +107,8 @@
 #define LCD_RST_SET     RST_Set()
 #define LCD_RST_CLR     RST_Clear()
 
-#define LCD_CS_SET      SS_Set()
-#define LCD_CS_CLR      SS_Clear()
-
-
-//#define LCD_DC_TRIS     TFT_DC_OutputEnable()
-//#define LCD_RST_TRIS    TFT_RST_OutputEnable()
-//#define LCD_CS_TRIS     GPIO_PinOutputEnable(TFT_SS_PIN)
-//#define LCD_SDO_TRIS    GPIO_PinOutputEnable(TFT_SDO_PIN);
+#define LCD_CS_SET      CS_Set()
+#define LCD_CS_CLR      CS_Clear()
 
 #define tabspace 4 // number of spaces for a tab
 
@@ -132,6 +128,11 @@ typedef struct
 extern ILI9341_INFO ili9341Info;
 
 void ILI9341_Init(void);
+
+void ili9341_writeCommand(uint8_t cmd);
+void ili9341_writeData(uint8_t dat);
+void ili9341_writeData16(uint16_t dat);
+
 uint16_t ILI9341_Color565(uint8_t r, uint8_t g, uint8_t b);
 void ILI9341_DrawPixel(int16_t x, int16_t y, uint16_t color);
 void ILI9341_DrawFastVLine(int16_t x, int16_t y, int16_t h, uint16_t color);
@@ -148,8 +149,5 @@ void ILI9341_SetScroll(uint16_t offset);
 void ILI9341_InvertDisplay(bool b);
 uint16_t ILI9341_GetWidth(void);
 uint16_t ILI9341_GetHeight(void);
-
-void ili9341_writeData(uint8_t c);
-void ili9341_writeData16(uint16_t c);
 
 #endif
