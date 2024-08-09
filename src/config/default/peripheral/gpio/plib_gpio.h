@@ -81,7 +81,7 @@
 #define LED1_OutputEnable()      (TRISACLR = (1<<0))
 #define LED1_InputEnable()       (TRISASET = (1<<0))
 #define LED1_Get()               ((PORTA >> 0) & 0x1)
-#define LED1_PIN                  TRISAbits.TRISA0
+#define LED1_PIN                  PORTAbits.RA0
 
 /*** Macros for LED2 pin ***/
 #define LED2_Set()               (LATASET = (1<<1))
@@ -90,7 +90,7 @@
 #define LED2_OutputEnable()      (TRISACLR = (1<<1))
 #define LED2_InputEnable()       (TRISASET = (1<<1))
 #define LED2_Get()               ((PORTA >> 1) & 0x1)
-#define LED2_PIN                  TRISAbits.TRISA1
+#define LED2_PIN                  PORTAbits.RA1
 
 /*** Macros for BUZZER pin ***/
 #define BUZZER_Set()               (LATASET = (1<<2))
@@ -99,7 +99,7 @@
 #define BUZZER_OutputEnable()      (TRISACLR = (1<<2))
 #define BUZZER_InputEnable()       (TRISASET = (1<<2))
 #define BUZZER_Get()               ((PORTA >> 2) & 0x1)
-#define BUZZER_PIN                  TRISAbits.TRISA2
+#define BUZZER_PIN                  PORTAbits.RA2
 
 /*** Macros for BUTTON_PROB1 pin ***/
 #define BUTTON_PROB1_Set()               (LATASET = (1<<3))

@@ -44,9 +44,9 @@ int main ( void )
     SYS_Initialize ( NULL );
     CORETIMER_Start();
     
-    ILI9341_Init();
-    ILI9341_SetRotation(0);
-    ILI9341_FillScreen(ILI9341_RED);
+//    ILI9341_Init();
+//    ILI9341_SetRotation(0);
+//    ILI9341_FillScreen(ILI9341_RED);
     
     //APP_Initialize();
     
