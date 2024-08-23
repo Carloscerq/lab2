@@ -5,4 +5,6 @@
 
 void SystemInitialize( );
 
+void TestPLIB();
+
 #endif

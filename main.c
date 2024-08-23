@@ -5,11 +5,15 @@
 #include "data.h"
 #include "eventHandler.h"
 #include "app.h"
+#include "ili9341.h"
 
 int main()
 {
     SystemInitialize();
-    APP_Initialize();
+    //APP_Initialize();
+    ILI9341_Init();
+    
+    ILI9341_FillScreen(ILI9341_GREEN);
     
     struct globalStatus applicationStatus;
     applicationStatus.ledState[0] = IS_OFF;
@@ -17,6 +21,8 @@ int main()
     applicationStatus.btnPrevState[0] = IS_OFF;
     applicationStatus.btnPrevState[1] = IS_OFF;
     applicationStatus.shouldBeep = IS_OFF;
+    
+    TestPLIB();
     
     while(1)
     {

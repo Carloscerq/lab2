@@ -48,3 +48,12 @@ void SystemInitialize() {
     
     CORETIMER_Start();
 }
+
+void TestPLIB() {
+    // STEP 2. configure the port registers
+    PORTSetPinsDigitalOut(IOPORT_F, BIT_7);
+    // STEP 3. initialize the port pin states = outputs low
+    mPORTFClearBits(BIT_7);
+    CORETIMER_DelayMs(500);
+    mPORTFSetBits(BIT_7);
+}
