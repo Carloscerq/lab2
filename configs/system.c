@@ -1,4 +1,5 @@
 #include <xc.h>
+#include <stdbool.h>
 #include "system.h"
 #include "spi_plib.h"
 #include "plib_coretimer.h"
@@ -10,15 +11,31 @@
 #include <plib.h>
 
 #pragma config FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FPLLODIV = DIV_1, FWDTEN = OFF
-#pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_1
+#pragma config POSCMOD = HS, FNOSC = PRIPLL, FPBDIV = DIV_2
 
 // Inicializa o SPI como mestre
-void SPI_InitMaster(uint8_t spiChannel) {
-    SpiChnOpen(spiChannel, SPICON_MSTEN | SPICON_FRMEN | SPICON_SMP | SPICON_ON, 8);
+void SPI_InitMaster(uint8_t spiChannel, unsigned int srcClkDiv) {
+    SpiChnOpen(spiChannel, SPICON_MSTEN | SPICON_FRMEN | SPICON_ON, srcClkDiv);
+}
+
+void SPI_ChangeMode(uint8_t spiChannel, bool spiMode) {
+    if (spiMode == 1) {
+        SpiChnEnable(spiChannel, 0);
+        SpiChnConfigure(spiChannel, SPI_CONFIG_MSTEN | SPI_CONFIG_FRMEN | SPI_CONFIG_MODE16);
+        SpiChnEnable(spiChannel, 1);
+    } else {
+        SpiChnEnable(spiChannel, 0);
+        SpiChnConfigure(spiChannel, SPI_CONFIG_MSTEN | SPI_CONFIG_FRMEN | SPI_CONFIG_MODE8);
+        SpiChnEnable(spiChannel, 1);
+    }
 }
 
 // Envia um byte pelo SPI
 void SPI_SendByte(uint8_t spiChannel, uint8_t txByte) {
+    SpiChnPutC(spiChannel, txByte);
+}
+
+void SPI_Send16Bits(uint16_t spiChannel, uint16_t txByte) {
     SpiChnPutC(spiChannel, txByte);
 }
 
@@ -43,7 +60,7 @@ void SystemInitialize() {
     SYSTEMConfig(SYS_FREQ, SYS_CFG_WAIT_STATES | SYS_CFG_PCACHE);
     
     GPIO_Init();
-    SPI_InitMaster(SPI_CHANNEL2); // SPI para display
+    SPI_InitMaster(SPI_CHANNEL2, 8); // SPI para display
     CORETIMER_Initialize();
     
     CORETIMER_Start();

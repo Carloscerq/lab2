@@ -4,6 +4,8 @@
 
 ILI9341_INFO ili9341Info;
 
+bool SPI_16Bits_Mode = 0;
+
 void ili9341_writeCommand(uint8_t cmd);
 void ili9341_writeData(uint8_t dat);
 void ili9341_writeData16(uint16_t dat);
@@ -24,13 +26,14 @@ void ILI9341_Init(void)
 
     LCD_DC_CLR;
     LCD_CS_CLR;
+    CORETIMER_DelayMs(50);    
     LCD_CS_SET;
 
     // Reset
     LCD_RST_CLR;
-    CORETIMER_DelayMs(10);    
+    CORETIMER_DelayMs(50);    
     LCD_RST_SET;
-    CORETIMER_DelayMs(10);
+    CORETIMER_DelayMs(50);
 
     ili9341_writeCommand(0xEF);
     CORETIMER_DelayMs(100);
@@ -147,21 +150,19 @@ void ILI9341_Init(void)
 
 void ili9341_spiWrite8(uint8_t c)
 {
+    if (SPI_16Bits_Mode == 1) {
+        SPI_ChangeMode(SPI_CHN, 0);
+    }
     // Envia um único byte via SPI
     SPI_SendByte(SPI_CHN, c);
 }
 
 void ili9341_spiWrite16(uint16_t c)
 {
-    uint8_t msb, lsb;
-    msb = c >> 8;    // Byte mais significativo (MSB)
-    lsb = c & 0xFF;  // Byte menos significativo (LSB)
-
-    // Envia os dois bytes via SPI, um byte de cada vez
-    SPI_SendByte(SPI_CHN, msb);
-    SPI_SendByte(SPI_CHN, lsb);
-
-
+    if (SPI_16Bits_Mode == 0) {
+        SPI_ChangeMode(SPI_CHN, 1);
+    }
+    SPI_Send16Bits(SPI_CHN, c);
 }
   
 void ili9341_writeCommand(uint8_t cmd)
