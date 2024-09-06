@@ -31,8 +31,11 @@
 #define LED2_PIN               LATAbits.LATA4
 #define LED2_TRIS              TRISAbits.TRISA4
 
-#define BUZZER_PIN             LATAbits.LATA5
-#define BUZZER_TRIS            TRISAbits.TRISA5
+#define LED3_PIN               LATAbits.LATA5
+#define LED3_TRIS              TRISAbits.TRISA5
+
+#define BUZZER_PIN             LATAbits.LATA6
+#define BUZZER_TRIS            TRISAbits.TRISA6
 
 // Macros para configurar os pinos
 #define DC_Set()   (DC_PIN = 1)
@@ -49,6 +52,9 @@
 
 #define LED2_Set()     (LED2_PIN = 1)
 #define LED2_Clear()   (LED2_PIN = 0)
+
+#define LED3_Set()     (LED3_PIN = 1)
+#define LED3_Clear()   (LED3_PIN = 0)
 
 #define BUZZER_Set()   (BUZZER_PIN = 1)
 #define BUZZER_Clear() (BUZZER_PIN = 0)

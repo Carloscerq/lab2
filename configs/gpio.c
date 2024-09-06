@@ -11,6 +11,7 @@ void GPIO_Init(void) {
     BUTTON_ALARM_TRIS = 1;
     LED1_TRIS = 0;
     LED2_TRIS = 0;
+    LED3_TRIS = 0;
     BUZZER_TRIS = 0;
     
     DC_Clear();
@@ -19,6 +20,7 @@ void GPIO_Init(void) {
     
     LED1_Clear();
     LED2_Clear();
+    LED3_Clear();
     BUZZER_Clear();
     
 }
